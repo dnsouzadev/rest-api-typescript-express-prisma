@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "@types/node": "^18.13.0",
     "esbuild-register": "^3.4.2",
     "nodemon": "^2.0.20",
+    "prettier-plugin-prisma": "^4.10.0",
     "prisma": "^4.10.1",
     "typescript": "^4.9.5"
   }
