@@ -44,3 +44,22 @@ authorRouter.post("/", body("firstName").isString(), body("lastName").isString()
         return response.status(500).json(error.message)
     }
 })
+
+// PUT: Update a author
+authorRouter.put("/:id", body("firstName").isString(), body("lastName").isString(), async (request: Request, response: Response) => {
+    const errors = validationResult(request)
+    if (!errors.isEmpty()) {
+        return response.status(400).json({ errors: errors.array() })
+    }
+    try {
+        const id: number = parseInt(request.params.id, 10)
+        const author = request.body
+        const UpdateAuthor = await AuthorService.updateAuthor(author, id)
+        if (UpdateAuthor) {
+            return response.status(200).json(UpdateAuthor)
+        }
+        return response.status(404).json("Author could not be found")
+    } catch (error: any) {
+        return response.status(500).json(error.message)
+    }
+})
